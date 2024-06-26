@@ -1,0 +1,60 @@
+Algorithm lirePhrase
+//Declaration de variable
+VAR
+    Longueur,Mots,nb_voyelles , i : Integer
+    voyelles : Set of Character
+    Phrase : String
+
+BEGIN
+// on itinialise tout à 0
+    Longueur = 0 
+    Mots = 0
+    nb_voyelles = 0
+    voyelles = {"a", "e", "i", "o", "u", "A", "E", "I", "O", "U"}
+
+// on doit entrer une phrase a compter 
+    Display "Entrez une phrase qui se termine par un point: "
+    Read Phrase
+
+// si la phrase ne se termine pas par un point alors il retourne la phrase suivante
+    IF (phrase[length -1] !== ".") THEN
+        Display "La phrase doit se terminer par un point."
+        Return 
+    END_IF
+    
+// La boucle commence à 1 
+    i = 1
+// Tant que i inferieur à la longueur de la phrase 
+    WHILE (i ≤ phrase.length) DO
+
+// si le caractère est point alors la boucle se termine.
+        IF (phrase[i] = ".") THEN
+            EXIT WHILE
+        END_IF
+        Longueur = Longueur + 1    // On ajoute 1 a la longueur
+
+// si le caractère est voyelles alors on ajoute 1 au nombre de voyelles
+        IF (phrase[i] ∈ voyelles) THEN
+            nb_voyelles = nb_voyelles + 1
+        END_IF
+
+// si le caractère est vide et( i = 1 ou le caractère est vide alors on ajoute le nombre de mots
+        IF (phrase[i]=" " AND (i = 1 OR phrase[i] !== " ")) THEN
+            Mots = Mots + 1
+        END_IF
+
+// On incrémente i
+        i ← i + 1
+    END_WHILE
+
+ // on vérifie si la longueur de la phrase est supérieure à 0, puis ajoute un mot supplémentaire à mots pour s'assurer que le dernier mot de la phrase est compté
+    IF (Longueur > 0) THEN
+        Mots = Mots + 1
+    END_IF
+
+
+// on affiche les résultats
+    Display "Longueur de la phrase: ", Longueur
+    Display "Nombre de mots: ", Mots
+    Display "Nombre de voyelles: ", nb_voyelles
+END
